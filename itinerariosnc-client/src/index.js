@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
+import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import Login from './features/login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import Login from './features/login/Login';
 import AnaliseAgendamento from "../src/features/analise-agendamento/AnaliseAgendamento";
 
 

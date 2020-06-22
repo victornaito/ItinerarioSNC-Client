@@ -1,4 +1,5 @@
 import Axios, { AxiosStatic, AxiosInstance } from 'axios';
+import { BaseApiEnum, getBaseApiById } from '../enums/base-api-enum';
 
 export abstract class HttpInterceptorBase {
 
@@ -6,12 +7,12 @@ export abstract class HttpInterceptorBase {
     private _jwtToken: string | undefined;
     private _path!: string;
 
-    constructor(path: string) {
-        this._path = path;
+    constructor(baseApiKey: BaseApiEnum) {
+        this._path = getBaseApiById(baseApiKey).description;
         this._httpClient = this.getNewHttpClient(Axios);
         Axios.get("http://localhost:9001/api/base/getToken").then(response => {
             this._jwtToken = response.data
-            this.setConfiguration(this._jwtToken, path);
+            this.setConfiguration(this._jwtToken, this._path);
         }, 
         reject => { console.log(reject); }
         );
@@ -36,10 +37,10 @@ export abstract class HttpInterceptorBase {
         this._httpClient = value;
     }
 
-    protected get path(): string {
+    protected get path() : string  {
         return this._path;
     }
-    protected set path(value: string) {
+    protected set path(value) {
         this._path = value;
     }
 }
