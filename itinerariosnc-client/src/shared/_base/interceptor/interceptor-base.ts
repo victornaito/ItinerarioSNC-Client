@@ -22,6 +22,7 @@ export abstract class HttpInterceptorBase {
         this._httpClient.interceptors.request.use(config => {
             config.headers.Authorization = jwtToken;
             config.url = `http://localhost:9001/api/${path}`;
+            config.headers.AcceptEnconding = 'gzip, compress';
             return config;
         });
     }
