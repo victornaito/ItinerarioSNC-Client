@@ -1,0 +1,83 @@
+
+a {
+    text-decoration: none !important;
+}
+
+.Login {
+    margin: 0%;
+    padding: 0%;
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email {
+    color: rebeccapurple;
+    background: ghostwhite;
+    display: inline-flex;
+}
+
+.senha {
+    color: rebeccapurple;
+    background: ghostwhite;
+        display: inline-flex;
+ 
+}
+
+button {
+    animation: steps(1) 1 0.5 0.1 2 infinite linear;
+}
+
+label {
+  font-weight: bold
+}
+
+form {
+    display: flexbox;
+    border: 2px solid rgba(255,100,100,0.5)
+
+}
+
+#defaultLoginFormEmail {
+    border: 0.1em orangered solid;
+}
+
+#defaultLoginFormPassword {
+    border: 0.1em orangered solid;
+}
+
+#btn-logar {
+    border: 0.1em tomato solid;
+    color: white;
+    background-color: tomato;
+}
+
+#btn-logar:hover {
+    background-color: tomato;
+    opacity: 0.9;
+}
+
+
+#btn-logar:focus {
+     border: 0.1em tomato solid;
+    opacity: 0.9;
+}
+
+#btn-logar:checked {
+    border:0.3em tomato solid;
+}
+
+#btn-logar:visited {
+    border:0.3em tomato solid;
+    background-color: tomato;
+    opacity: 1;
+    box-shadow: none;
+}
+
+#label-email {
+    animation: ease-in 0.1 0.1 0  cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#defaultLoginFFormRemember {
+    background-color: beige;
+}
