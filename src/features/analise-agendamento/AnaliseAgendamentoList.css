@@ -1,3 +1,8 @@
+body {
+    width: 99%;
+    background: #f5f5f5;
+}
+
 .Login {
     margin: 0%;
     padding: 0%;
@@ -15,7 +20,7 @@
 .senha {
     color: rebeccapurple;
     background: ghostwhite;
-        display: inline-flex;
+    display: inline-flex;
  
 }
 
@@ -31,4 +36,21 @@ form {
     display: flexbox;
     border: 2px solid rgba(255,100,100,0.5)
 
+}
+
+.list-item {
+    background-color: transparent;
+    margin-left:10vh; 
+    height: 10vh;
+    flex-direction: column;
+    border-bottom: 0.1px #9ac1da solid;
+}
+
+.list-item:hover {
+    background-color: #e9f2f8;
+    box-shadow: 4px 0 0 #0073b1 inset, 0 -1px 0 #f3f6f8 inset;
+}
+
+nav {
+    background-color: #7952b3;
 }

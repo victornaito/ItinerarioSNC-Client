@@ -6,22 +6,19 @@ export abstract class HttpInterceptorBase {
     private _httpClient!: AxiosInstance;
     private _jwtToken: string | undefined;
     private _path!: string;
+    private _baseUrl!: string;
 
     constructor(baseApiKey: BaseApiEnum) {
-        this._path = getBaseApiById(baseApiKey).description;
+        const url = getBaseApiById(baseApiKey);
+        this._path = url.description;
+        this._baseUrl = url.baseUrl;
         this._httpClient = this.getNewHttpClient(Axios);
-        Axios.get("http://localhost:9001/api/base/getToken").then(response => {
-            this._jwtToken = response.data
-            this.setConfiguration(this._jwtToken, this._path);
-        }, 
-        reject => { console.log(reject); }
-        );
     }
 
-    private setConfiguration(jwtToken: string | undefined, path: string): void {
+    protected setConfiguration(jwtToken: string | undefined, path: string, baseUrl: string): void {
         this._httpClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${jwtToken}`;
-            config.url = `http://localhost:9001/api/${path}`;
+            config.url = `${baseUrl}${path}`;
             config.headers.AcceptEnconding = 'gzip, compress';
             return config;
         });
@@ -30,7 +27,7 @@ export abstract class HttpInterceptorBase {
     private getNewHttpClient = (Axios: AxiosStatic): AxiosInstance => Axios.create();
     
     protected get httpClient(): AxiosInstance {
-        this.setConfiguration(this._jwtToken, this._path);
+        this.setConfiguration(this._jwtToken, this._path, this._baseUrl);
         return this._httpClient;
     }
 

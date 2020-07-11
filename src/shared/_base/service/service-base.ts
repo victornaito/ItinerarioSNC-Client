@@ -4,6 +4,7 @@ import { BaseApiEnum } from "../enums/base-api-enum";
 export default class ServiceBase<T> extends HttpInterceptorBase {
     
     protected BASE_API_URL = new Map<BaseApiEnum, string>();
+    protected BASE_URL = 'http://localhost:9000/api/';
 
     constructor(baseApiKey: BaseApiEnum) {
         super(baseApiKey);
@@ -23,8 +24,8 @@ export default class ServiceBase<T> extends HttpInterceptorBase {
     }
 
     private setBaseApiUrl() {
-        this.BASE_API_URL.set(BaseApiEnum.PessoaFisica, BaseApiEnum.PessoaFisicaDescricao);
-        this.BASE_API_URL.set(BaseApiEnum.AnaliseAgendamento, BaseApiEnum.AnaliseAgendamentoDescricao);
+        this.BASE_API_URL.set(BaseApiEnum.PessoaFisica, `${this.BASE_URL}${BaseApiEnum.PessoaFisicaDescricao}`);
+        this.BASE_API_URL.set(BaseApiEnum.AnaliseAgendamento, `${this.BASE_URL}${BaseApiEnum.AnaliseAgendamentoDescricao}`);
+        this.BASE_API_URL.set(BaseApiEnum.Login, `${this.BASE_URL}${BaseApiEnum.LoginDescricao}`);
     }
-
 }
